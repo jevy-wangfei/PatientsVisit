@@ -1,2 +1,2 @@
-# PatientsVisit
-Coding Challengs
+# Patients Visit
+Coding Challenge
