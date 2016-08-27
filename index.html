@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Patients Visit</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" media="screen" charset="utf-8">
+    <link rel="stylesheet" href="./css/main.css" media="screen"  charset="utf-8">
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Patients Visit</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-5">
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h4 class="pannel-title pull-left">Patients</h4>
+              <h4><button class="btn btn-sm btn-default pull-right" data-toggle="modal" data-target="#addPatient">
+                <i class="pannel-title pull-right glyphicon glyphicon-plus"></i>
+              </button></h4>
+              <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+              <div class="input-group col-xs-12">
+                <input type="text" class="form-control" placeholder="Filter by Name or D.O.B range - 1/3/1995 - 15/4/2000">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" name="button">Filter</button>
+                </span>
+              </div>
+            </div>
+              <table class="table table-striped table-hover" id="patients">
+                <tr>
+                  <td class="col-xs-3">
+                    First Name
+                  </td>
+                  <td class="col-xs-3">
+                    Last Name
+                  </td>
+                  <td class="col-xs-3">
+                    D.O.B
+                  </td>
+                  <td class="col-xs-1">
+
+                  </td>
+                </tr>
+
+                <tr>
+                  <td>
+                    Jason
+                  </td>
+                  <td>
+                    Franklin
+                  </td>
+                  <td>
+                    02/11/1989
+                  </td>
+                  <td>
+                    >>
+                  </td>
+                </tr>
+              </table>
+          </div>
+          <div>
+            <a href="#" onclick="removeView()">Remove Patients</a>
+          </div>
+        </div>
+        <div class="col-xs-7 notes">
+          <div class="panel panel-primary his-notes">
+            <div class="panel-heading">
+              <h4 class="pannel-title pull-left">Patient Notes</h4>
+              <h4><a class="btn btn-sm btn-default pull-right" href="#appendNotes">
+                <i class="pannel-title pull-right glyphicon glyphicon-plus"></i>
+              </a></h4>
+              <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+              <div class="note">
+                <div class="note-title">
+                  <i>Jevy</i> <span>07/02/2009</span> <a href="#" class="pull-right glyphicon glyphicon-remove"></a>
+                </div>
+                <div class="note-content">
+                  Test only, no real content here.
+                </div>
+              </div>
+              <div class="note">
+                <div class="note-title">
+                  <i>Jevy</i> <span>07/02/2009</span> <a href="#" class="pull-right glyphicon glyphicon-remove"></a>
+                </div>
+                <div class="note-content">
+                  Test only, no real content here.
+                </div>
+              </div>
+              <div class="note">
+                <div class="note-title">
+                  <i>Jevy</i> <span>07/02/2009</span> <a href="#" class="pull-right glyphicon glyphicon-remove"></a>
+                </div>
+                <div class="note-content">
+                  Test only, no real content here.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h4 class="panel-title" id="appendNotes">Add Note</h4>
+            </div>
+            <div class="panel-body">
+              <div class="appendNotes">
+                <form class="form-horizontal" action="#" method="post">
+                  <div class="form-group">
+                      <textarea name="note" rows="8" class="form-control col-xs-12" placeholder="Append Note Here ..."></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="doctor" class="col-xs-2">Doctor:</label>
+                    <input type="text" name="doctor" class="col-xs-4" id="doctor" placeholder="Doctor Name">
+                    <div class="col-xs-2  col-xs-offset-2">
+                      <button type="submit" name="button" class="btn btn-danger">Cancle</button>
+                    </div>
+                    <div class="col-xs-2">
+                      <button type="submit" name="button" class="btn btn-primary">Save</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- New Patient Popup -->
+    <div class="modal fade" id="addPatient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">New Patient</h4>
+          </div>
+          <div class="modal-body">
+            <div class="addPatient">
+              <form class="form-horizontal" action="#" method="post">
+                <div class="form-group">
+                  <label for="firstName" class="col-xs-3">First Name:</label>
+                  <input type="text" name="firstName" class="col-xs-8" id="firstName" placeholder="First Name">
+                </div>
+                <div class="form-group">
+                  <label for="lastName" class="col-xs-3">Last Name:</label>
+                  <input type="text" name="firstName" class="col-xs-8" id="lastName" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                  <label for="dob" class="col-xs-3">D.O.B:</label>
+                  <input type="text" name="dob" class="col-xs-8" id="firstName" placeholder="D.O.B">
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancle</button>
+            <button type="button" class="btn btn-primary">Save</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- End New Patient Popup -->
+
+  </body>
+  <script src="./js/jquery.min.js" charset="utf-8"></script>
+  <script src="./js/bootstrap.min.js" charset="utf-8"></script>
+  <script type="text/javascript">
+
+  </script>
+</html>

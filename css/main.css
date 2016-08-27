@@ -1,0 +1,32 @@
+.note{
+  background-color: #FFFDEA;
+  border-radius: 5px;
+  padding: 5px;
+  border-bottom: 1px dotted gray;
+  margin-bottom: 10px;
+
+}
+.note:hover{
+  background-color: #fffbd1;
+}
+.note-title i{
+  font-size: 14px;
+  font-style: oblique;
+}
+.note-title span{
+  font-size: 10px;
+  color: gray;
+  margin-left: 10px;
+}
+
+.note-title a{
+  text-decoration: none;
+}
+.note-title a:hover{
+  color:#BD5A5A;
+}
+
+.note-content{
+  margin: 5px;
+  padding-left: 10px;
+}
