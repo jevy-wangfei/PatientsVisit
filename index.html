@@ -28,113 +28,82 @@
             </div>
             <div class="panel-body">
               <div class="input-group col-xs-12">
-                <input type="text" class="form-control" placeholder="Filter by Name or D.O.B range - 1/3/1995 - 15/4/2000">
+                <input type="text" class="form-control" placeholder="Filter by Name or D.O.B Range eg. 1/3/1995 - 15/4/2000">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button" name="button">Filter</button>
                 </span>
               </div>
             </div>
               <table class="table table-striped table-hover" id="patients">
-                <tr>
-                  <td class="col-xs-3">
-                    First Name
-                  </td>
-                  <td class="col-xs-3">
-                    Last Name
-                  </td>
-                  <td class="col-xs-3">
-                    D.O.B
-                  </td>
-                  <td class="col-xs-1">
-
-                  </td>
-                </tr>
-
-                <tr>
-                  <td>
-                    Jason
-                  </td>
-                  <td>
-                    Franklin
-                  </td>
-                  <td>
-                    02/11/1989
-                  </td>
-                  <td>
-                    >>
-                  </td>
-                </tr>
+                <!-- Patients Display Here -->
               </table>
           </div>
-          <div>
-            <a href="#" onclick="removeView()">Remove Patients</a>
+          <div class="remove-patients">
+            <a class="btn btn-default" href="#" onclick="removeView()">Remove Patients</a>
+            <a class="btn btn-default" href="#" onclick="cancleRemoveView()">Cancel Operation</a>
           </div>
         </div>
         <div class="col-xs-7 notes">
           <div class="panel panel-primary his-notes">
             <div class="panel-heading">
-              <h4 class="pannel-title pull-left">Patient Notes</h4>
+              <h4 class="pannel-title pull-left"><i class="patientName"></i> Visit Notes</h4>
               <h4><a class="btn btn-sm btn-default pull-right" href="#appendNotes">
                 <i class="pannel-title pull-right glyphicon glyphicon-plus"></i>
               </a></h4>
               <div class="clearfix"></div>
             </div>
-            <div class="panel-body">
-              <div class="note">
+            <div class="panel-body notes-items">
+              <div class="">
+                Click Patient on Left Panel to Display Patient's notes at This Place.
+              </div>
+              <!-- <div class="note" id="nid">
                 <div class="note-title">
-                  <i>Jevy</i> <span>07/02/2009</span> <a href="#" class="pull-right glyphicon glyphicon-remove"></a>
+                  <i>Jevy</i> <span>07/02/2009</span> <a href="#" onclick=removeNote(nid) class="pull-right glyphicon glyphicon-remove"></a>
                 </div>
                 <div class="note-content">
                   Test only, no real content here.
                 </div>
-              </div>
-              <div class="note">
-                <div class="note-title">
-                  <i>Jevy</i> <span>07/02/2009</span> <a href="#" class="pull-right glyphicon glyphicon-remove"></a>
-                </div>
-                <div class="note-content">
-                  Test only, no real content here.
-                </div>
-              </div>
-              <div class="note">
-                <div class="note-title">
-                  <i>Jevy</i> <span>07/02/2009</span> <a href="#" class="pull-right glyphicon glyphicon-remove"></a>
-                </div>
-                <div class="note-content">
-                  Test only, no real content here.
-                </div>
-              </div>
+              </div> -->
             </div>
           </div>
 
+
+          <!-- Append New Notes Form -->
           <div class="panel panel-success">
             <div class="panel-heading">
-              <h4 class="panel-title" id="appendNotes">Add Note</h4>
+              <h4 class="panel-title" id="appendNotes">Add Note to <i class="patientName"></i></h4>
             </div>
             <div class="panel-body">
-              <div class="appendNotes">
-                <form class="form-horizontal" action="#" method="post">
+              <div class="appendNotes form-horizontal">
+                <!-- <form class="form-horizontal"  method="post"> -->
                   <div class="form-group">
-                      <textarea name="note" rows="8" class="form-control col-xs-12" placeholder="Append Note Here ..."></textarea>
+                      <textarea name="note" rows="8" class="form-control col-xs-12" id="newNote" placeholder="Append Note Here ..."></textarea>
+                      <input type="hidden" name="name" id="selectedPatient" value="">
                   </div>
                   <div class="form-group">
                     <label for="doctor" class="col-xs-2">Doctor:</label>
                     <input type="text" name="doctor" class="col-xs-4" id="doctor" placeholder="Doctor Name">
                     <div class="col-xs-2  col-xs-offset-2">
-                      <button type="submit" name="button" class="btn btn-danger">Cancle</button>
+                      <button type="submit" name="button" class="btn btn-danger" onclick="cleanNote()">Cancle</button>
                     </div>
                     <div class="col-xs-2">
-                      <button type="submit" name="button" class="btn btn-primary">Save</button>
+                      <button type="submit" name="button" class="btn btn-primary" onclick="appendNote()">Save</button>
                     </div>
                   </div>
-                </form>
+                <!-- </form> -->
               </div>
             </div>
           </div>
 
         </div>
-      </div>
+      </div> <!-- End of Row -->
+
+    </div> <!-- End of Container -->
+    <div class="row footer">
+
     </div>
+
+
     <!-- New Patient Popup -->
     <div class="modal fade" id="addPatient" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -156,14 +125,14 @@
                 </div>
                 <div class="form-group">
                   <label for="dob" class="col-xs-3">D.O.B:</label>
-                  <input type="text" name="dob" class="col-xs-8" id="firstName" placeholder="D.O.B">
+                  <input type="text" name="dob" class="col-xs-8" id="dob" placeholder="D.O.B">
                 </div>
               </form>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancle</button>
-            <button type="button" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="newPatent()">Save</button>
           </div>
         </div>
       </div>
@@ -172,7 +141,126 @@
   </body>
   <script src="./js/jquery.min.js" charset="utf-8"></script>
   <script src="./js/bootstrap.min.js" charset="utf-8"></script>
+  <script src="./js/demoData.js" charset="utf-8"></script>
+  <script src="./js/patientsVisit.js" charset="utf-8"></script>
   <script type="text/javascript">
 
+function newPatent(){
+  var patient = {};
+  patient.firstName = $("#firstName").val();
+  patient.lastName = $("#firstName").val();
+  patient.DOB = $("#dob").val();
+  savePatient(patient, function(data){
+    $("#patients").append(
+      '<tr data-pid="'+data.id+'">'+
+      '<td>'+data.firstName+'</td>'+
+      '<td>'+data.lastName+'</td>'+
+      '<td>'+data.DOB+'</td>'+
+      '<td class="operation"></td></tr>');
+  });
+}
+
+function appendNote(){
+  var note = {};
+  var pid = $("#selectedPatient").val();
+  note.doctor = $("#doctor").val();
+  note.note = $("#newNote").val();
+  saveNote(pid, note, function(data){
+    $(".notes-items").append(
+      '<div class="note" id="n'+data.nid+'">'+
+      '<div class="note-title">'+
+      '<i>'+data.doctor+'</i> <span>'+data.time+'</span> <a href="#" onclick="removeNote('+data.nid+')" class="pull-right glyphicon glyphicon-remove"></a>'+
+      '</div>'+
+      '<div class="note-content">'+ data.note +
+      '</div></div>');
+  });
+
+}
+  $(document).ready(initApp());
+
+  function initApp(){
+  // Load patients
+    loadPatients(function(data){
+      $("#patients").empty();
+      $("#patients").append('<tr><td class="col-xs-3">First Name</td><td class="col-xs-3">Last Name</td>'+
+      '<td class="col-xs-3">D.O.B</td><td class="col-xs-1"></td></tr>');
+      $.each(data, function(index, item){
+        $("#patients").append(
+          '<tr data-pid="'+item.id+'">'+
+          '<td>'+item.firstName+'</td>'+
+          '<td>'+item.lastName+'</td>'+
+          '<td>'+item.DOB+'</td>'+
+          '<td class="operation"></td></tr>');
+        });
+      });
+  }
+
+
+  //Add "click" listener to each row of patients
+  //Display visit notes of being clicked patient
+  $("#patients").find("td").on('click', function(){
+    var pid = $(this).parent().data("pid");
+    console.log("pid from data:"+pid);
+    var selectedRow = $(this).parent();
+    selectedRow.find(".operation").replaceWith('<td class="operation">&#62;&#62;</td>');
+    selectedRow.addClass("info");
+    // console.log(selectedRow);
+    var otherRow = $("#patients").find("tr").not(selectedRow);
+    // console.log(otherRow);
+    otherRow.find(".operation").replaceWith('<td class="operation"></td>');
+    otherRow.removeClass("info");
+    displayNote(pid);
+  });
+
+  function displayNote(pid){
+    //Change Visit Note title with patient's name
+    findPatient(pid, function(patientName){
+      $(".patientName").replaceWith(patientName.firstName + " " + patientName.lastName);
+      $("#selectedPatient").val(pid);
+    });
+
+    // Refresh Notes
+    $(".notes-items").empty();
+    findNote(pid, function(data){
+      // console.log(data);
+      $(data).each(function(index, item){
+        $(".notes-items").append(
+          '<div class="note" id="n'+item.nid+'">'+
+          '<div class="note-title">'+
+          '<i>'+item.doctor+'</i> <span>'+item.time+'</span> <a href="#" onclick="removeNote('+item.nid+')" class="pull-right glyphicon glyphicon-remove"></a>'+
+          '</div>'+
+          '<div class="note-content">'+ item.note +
+          '</div></div>');
+        });
+      });
+    }
+    function removeNote(nid){
+      //Just remove the note from interface,
+      $("#n"+nid).remove();
+      //Delete note from datasource
+      //Perform AJAX delete call with note id on real practic
+      deleteNote(nid);
+    }
+
+    //Switch to delete patient view on click "Remote Patient" linkage
+    function removeView(){
+      $(".operation").replaceWith('<td class="operation"> <a href="#" class="delete-patient btn btn-sm btn-danger glyphicon glyphicon-remove"></a></td>');
+      // patient delete listener
+      // perform patient remove from UI and patient delete from datasource
+      $("#patients").find(".delete-patient").on('click',function(){
+        var ele = $(this).parent().parent();
+        var pid = ele.data("pid");
+        ele.remove();
+        deletePatient(pid);
+        // put AJAX delete call with patient id to delete a patient.
+      });
+    }
+
+    function cancleRemoveView(){
+      initApp();
+    }
+
+
   </script>
+
 </html>
