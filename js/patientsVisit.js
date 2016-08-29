@@ -1,5 +1,11 @@
+/**
+  Copyright (c) 2016 Jevy (jevy.wangfei@gmail.com)
+
+  The Functions included in this file simulate DAO operations.
+  These functions could be changed to AJAX CRUD operations without affecting the code in UI.
+
+*/
 function getAllPatients() {
-  // callback(patientsArray);
   return patientsArray;
 }
 function findPatient(uid, callback){
@@ -18,13 +24,18 @@ function savePatient(patient, callback) {
   });
   maxId += 1;
   patient.id = maxId;
-  console.log(patient);
+  // console.log(patient);
   patientsArray.push(patient);
+  var emptyArray = [];
+  var newEle = {};
+  newEle[maxId] = emptyArray;
+
+  notesArray.push(newEle);
+  console.log(notesArray);
   callback(patient);
 }
 function deletePatient(uid){
   $.each(patientsArray, function(index, item){
-    console.log(item.id+", "+index);
     if(item.id == uid){
       patientsArray.splice(index, 1);
       return false;
@@ -47,7 +58,7 @@ function findNote(patientId, callback){
 function saveNote(pid, note, callback) {
   $.each(notesArray, function(index, item){
     if(item[pid]){
-      var maxUid = 1;
+      var maxUid = 0;
       $.each(item[pid], function(i, row){
         if(row.nid > maxUid) {
           maxUid = row.nid;
