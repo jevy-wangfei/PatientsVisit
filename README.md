@@ -25,17 +25,17 @@ Multi-browser Test,  Bug fix and submit  | 4:00 pm, Aug 30
 # Functions
 ## Functions included within page
 * Patients operations: New, Delete, Click, Filter
-** Use JQuery selector to complete these operations.
-** Use data-* to pass data
+  + Use JQuery selector to complete these operations.
+  + Use data-* to pass data
 
 * Notes operations: New, Delete
-** Use "id" attribute to select element
-** Use function parameter to passing data
+  ** Use "id" attribute to select element
+  ** Use function parameter to passing data
 (Note: Showing different way to do HTML&CSS operation)
 
 * Listeners: Since the most content of page is dynamic, specific listeners should be added to changed content.
-** Patients Choosing Listener
-** Patients Sorting Listener
+  ** Patients Choosing Listener
+  ** Patients Sorting Listener
 
 * Page init: loading and displaying data
 
