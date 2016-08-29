@@ -12,4 +12,4 @@ Multi-browser Test,  Bug fix and submit  | 4:00 pm, Aug 30
 
 ## Design
 
-<img src="http://jevy.wang/img/tmp/codingChalleng.png">
+<img src="http://jevy.wang/img/tmp/codingChallenge.png">

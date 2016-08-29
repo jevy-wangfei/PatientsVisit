@@ -1,5 +1,6 @@
-function loadPatients(callback) {
-  callback(patientsArray);
+function getAllPatients() {
+  // callback(patientsArray);
+  return patientsArray;
 }
 function findPatient(uid, callback){
   $.each(patientsArray, function(index, item){
@@ -23,9 +24,10 @@ function savePatient(patient, callback) {
 }
 function deletePatient(uid){
   $.each(patientsArray, function(index, item){
-    console.log(item);
+    console.log(item.id+", "+index);
     if(item.id == uid){
       patientsArray.splice(index, 1);
+      return false;
     }
   });
 }
@@ -44,14 +46,14 @@ function findNote(patientId, callback){
 
 function saveNote(pid, note, callback) {
   $.each(notesArray, function(index, item){
-    if(item[pid] !== null){
+    if(item[pid]){
       var maxUid = 1;
-      $.each(item[pid], function(index, row){
-        if(row.nid > maxUid) maxUid = row.nid;
+      $.each(item[pid], function(i, row){
+        if(row.nid > maxUid) {
+          maxUid = row.nid;
+        }
       });
-
-      note.nid = (maxUid+1);
-      console.log(note);
+      note.nid =(maxUid+1);
       item[pid].push(note);
       callback(note);
     }
@@ -59,10 +61,15 @@ function saveNote(pid, note, callback) {
 
 }
 
-function deleteNote(nid){
-  $.each(notesArray, function(index, item){
-    if(item.nid == nid){
-      notesArray.splice(index, 1);
+function deleteNote(pid, nid){
+  $.each(notesArray, function(index, item) {
+    if(item[pid]){
+      $.each(item[pid], function(i, row){
+        if(row.nid == nid){
+          notesArray[index][pid].splice(i,1);
+          return false;
+        }
+      });
     }
   });
 }
