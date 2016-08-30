@@ -16,26 +16,30 @@ Multi-browser Test,  Bug fix and submit  | 4:00 pm, Aug 30
 
 # UX/UI design
 
-* Simplify operation: Choose a patient -> Read history notes -> Add new Note.
-* Usage Guiding built in UI: Use Color, Symbol, Animation and help Text to teach user when they use the software.
-* Complicate danger operation: click "Remove Patient" button -> Click "X" of a patient -> Confirm ? -> Delete a Patient
-* Error Info Display on incorrect text field input: Day, Month, Year checking, new note without choosing patient, etc.
+* Simplify operation: 
+  + Choose a patient -> Read history notes -> Add new Note.
+* Usage Guiding built in UI: 
+  + Use Color, Symbol, Animation and help Text to teach user when they use the software.
+* Complicate danger operation: 
+  + Click "Remove Patient" button -> Click "X" of a patient -> Confirm ? -> Delete a Patient
+* Error Info Display on incorrect text field 
+  + Input: Day, Month, Year checking, new note without choosing patient, etc.
 * Use icon to represent rarely used function: New Patient.
 
 # Functions
 ## Functions included within page
 * Patients operations: New, Delete, Click, Filter
-** Use JQuery selector to complete these operations.
-** Use data-* to pass data
+  + Use JQuery selector to complete these operations.
+  + Use data-* to pass data
 
 * Notes operations: New, Delete
-** Use "id" attribute to select element
-** Use function parameter to passing data
+  + Use "id" attribute to select element
+  + Use function parameter to passing data
 (Note: Showing different way to do HTML&CSS operation)
 
 * Listeners: Since the most content of page is dynamic, specific listeners should be added to changed content.
-** Patients Choosing Listener
-** Patients Sorting Listener
+  + Patients Choosing Listener
+  + Patients Sorting Listener
 
 * Page init: loading and displaying data
 
