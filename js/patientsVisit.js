@@ -18,8 +18,8 @@ function findPatient(uid, callback){
 function savePatient(patient, callback) {
   var maxId = 1;
   $.each(patientsArray, function(index, item){
-    if(item.id > maxId){
-      maxId = item.id;
+    if(parseInt(item.id) > maxId){
+      maxId = parseInt(item.id);
     }
   });
   maxId += 1;
@@ -31,13 +31,14 @@ function savePatient(patient, callback) {
   newEle[maxId] = emptyArray;
 
   notesArray.push(newEle);
-  console.log(notesArray);
+  // console.log(notesArray);
   callback(patient);
 }
 function deletePatient(uid){
   $.each(patientsArray, function(index, item){
     if(item.id == uid){
       patientsArray.splice(index, 1);
+      // delete patientsArray[index];
       return false;
     }
   });
@@ -81,6 +82,15 @@ function deleteNote(pid, nid){
           return false;
         }
       });
+    }
+  });
+}
+
+function deleteNotesByPid(pid) {
+  $.each(notesArray, function(index, item) {
+    if(item[pid]){
+      delete notesArray[index][pid];
+      return false;
     }
   });
 }

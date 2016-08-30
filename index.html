@@ -201,13 +201,16 @@
   function newPatent(){
     var patient = {};
     patient.firstName = $("#firstName").val();
-    patient.lastName = $("#firstName").val();
+    patient.lastName = $("#lastName").val();
     var dob = $("#dob").datepicker("getDate");
     patient.DOB = ""+dob.getDate()+"/"+(dob.getMonth()+1)+"/"+dob.getFullYear();
     // console.log(patient.DOB);
     savePatient(patient, function(data){
       appendPatient(data);
     });
+    $("#firstName").val("");
+    $("#lastName").val("");
+    $("#dob").val("");
     patientsUIListener();
   }
 
@@ -261,7 +264,7 @@
   function newNote(){
     var note = {};
     var pid = $("#selectedPatient").val();
-    console.log(pid + typeof pid);
+    // console.log(pid + typeof pid);
     if(!pid){
       console.log("pid false");
       $(".notes-items").empty().append('<div class="text-danger">Please select a patient from left side. </div>');
@@ -322,6 +325,8 @@
     removePatient(removePatientEle);
     $("#canclePatientsView").hide();
     $("#removePatientsView").show();
+    patientsUIListener();
+    sortListener();
   }
 
   function removePatient(element){
@@ -333,6 +338,7 @@
       $(".notes-items").empty().append('<div class="">Click Patient on Left Panel to Display Patient\'s notes at This Place.</div>');
     }
     deletePatient(pid);
+    deleteNotesByPid(pid);
     // put AJAX delete call with patient id to delete a patient.
     confirmRemovePatientView();
   }
